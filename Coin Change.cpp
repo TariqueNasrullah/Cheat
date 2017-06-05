@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+#define INF 10000
 int coin[] = {1, 2, 3};
 int n = 3;
 int make = 5;
@@ -51,11 +53,87 @@ int coin_change(int n, int m)
 }
 */
 
+// More efficient way
+
+/*
+int coin_change(int n, int m)
+{
+    int table[m+1];
+    memset(table, 0, sizeof(table));
+    table[0] = 1;
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 1; j <= m; j++)
+        {
+            if(j >= coin[i]) table[j] += table[j - coin[i]];
+        }
+    }
+    return table[m];
+}
+*/
+
+// Minimum Number of coins to make the amount
+
+/*
+int tcoin[] = {7, 2, 3, 6};
+
+int coin_change(int n, int m)
+{
+    int table[m+1];
+    int keep_track[m+1]; // This array is for printing the coin combination
+
+    for(int i = 1; i <= m; i++)
+    {
+        table[i] = INF;
+        keep_track[i] = -1;
+    }
+
+    table[0] = 0;
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 1; j <= m; j++)
+        {
+            if(j >= tcoin[i])
+            {
+                if(table[j - tcoin[i]] + 1 < table[j])
+                {
+                    table[j] = table[j - tcoin[i]] + 1;
+                    keep_track[j] = i;
+                }
+            }
+        }
+    }
+
+    // Now Printing the solution
+
+    if(keep_track[m] == -1)
+    {
+        cout << "No solution" << endl;
+        return table[m];
+    }
+
+    int start = m;
+
+    while(start != 0)
+    {
+        cout << tcoin[keep_track[start]] << " ";
+        start = start - tcoin[keep_track[start]];
+    }
+
+    cout << endl;
+
+    return table[m];
+}
+*/
+
 int main()
 {
     //memset(dp, -1, sizeof(dp));
 
     //cout << coin_change(0, 0) << endl;
     //cout << coin_change(3, 5) << endl;
+    cout << coin_change(4, 13) << endl;
     return 0;
 }

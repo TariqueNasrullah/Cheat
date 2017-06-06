@@ -6,7 +6,7 @@ int coin[] = {1, 2, 3};
 int n = 3;
 int make = 5;
 
-//Recursive Solution
+//Recursive Solution  number of ways to make an amount
 /*
 
 int dp[3+1][5+1];
@@ -29,7 +29,7 @@ int coin_change(int i, int m)
 }
 */
 
-// Top Down Method
+// Top Down Method Number of ways to make an amount
 
 /*
 int coin_change(int n, int m)
@@ -53,7 +53,7 @@ int coin_change(int n, int m)
 }
 */
 
-// More efficient way
+// More efficient way (Number of ways to make an amount)
 
 /*
 int coin_change(int n, int m)
@@ -134,6 +134,6 @@ int main()
 
     //cout << coin_change(0, 0) << endl;
     //cout << coin_change(3, 5) << endl;
-    cout << coin_change(4, 13) << endl;
+    //cout << coin_change(4, 13) << endl;
     return 0;
 }

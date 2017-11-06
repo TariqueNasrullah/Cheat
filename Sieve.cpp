@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#define ll long long
 #define M 1000000
 
 bool marked[M];
@@ -46,7 +46,20 @@ bool isBitPrime(int num)
     return num > 1 && (num == 2 || ( (num&1) && !on(num)));
 }
 
+/* ============ Sieve for small Value ================
+    const int = 35000;
+    int sieve[200000];
 
+    sieve[0] = sieve[1] = 1;
+    for(int i = 2; i <= MAX; i++){
+
+        if(sieve[i]) continue;
+        primes.push_back(i);
+
+        for(int j = i + i; j <= MAX; j += i) sieve[j] = 1;
+
+    }
+====================================================*/
 
 int main()
 {
